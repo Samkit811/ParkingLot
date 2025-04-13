@@ -31,12 +31,14 @@ public class Floor {
                 if(this.totalSlot - this.takenSlot >=1){
                     isSlotAvailable = true;
                 }
+                break;
             }
 
             case FOUR_WHEELER: {
                 if(this.totalSlot - this.takenSlot >=2){
                     isSlotAvailable = true;
                 }
+                break;
             }
 
             default:
@@ -62,19 +64,24 @@ public class Floor {
         }
     }
 
-    public void emptySlot(Vehicle vehicle){
-        slotMap.remove(vehicle.vehicleNumber);
-        switch (vehicle.vehicleType){
-            case TWO_WHEELER: {
-                this.takenSlot--;
-            }
+    public boolean emptySlot(Vehicle vehicle){
+        if(slotMap.containsKey(vehicle.vehicleNumber)){
+            slotMap.remove(vehicle.vehicleNumber);
+            switch (vehicle.vehicleType){
+                case TWO_WHEELER: {
+                    this.takenSlot--;
+                }
 
-            case FOUR_WHEELER:{
-                this.totalSlot-=2;
-            }
+                case FOUR_WHEELER:{
+                    this.totalSlot-=2;
+                }
 
-            default:
-                break;
+                default:
+                    break;
+            }
+            return true;
+        } else {
+            return false;
         }
     }
 }

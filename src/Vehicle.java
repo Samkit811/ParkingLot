@@ -4,8 +4,8 @@ public class Vehicle {
     private int floorNumber;
 
     public Vehicle(VehicleType vehicleType, String vehicleNumber){
-        this.vehicleNumber = vehicleNumber;
         this.vehicleType = vehicleType;
+        this.vehicleNumber = vehicleNumber;
     }
 
     public void setFloorNumber(int floorNumber) {
